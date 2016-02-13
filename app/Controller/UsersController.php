@@ -46,7 +46,7 @@ class UsersController extends AppController{
             'name' => $us,
             'password' =>  $pas)
       ));
-      debug($res);
+      //debug($res);
       if(empty($res)){
         $data = 'Username or password is not correct!';
         $this->set('data', $data);

@@ -41,7 +41,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				//echo $this->Html->css('page_user');
 				break;
 			case 'Budgets':
-				echo $this->Html->css('page_buget');
+				echo $this->Html->css('page_budget');
 				break;
 		}
 
@@ -57,6 +57,19 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('bootstrap-select');
 		echo $this->Html->script('jquery-ui.min');
+		echo $this->Html->script('common');
+	?>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<?php
+		// ページ固有のjavascriptを読み込む
+		switch($this->name){
+			case 'Users':
+				//echo $this->Html->script('page_user');
+				break;
+			case 'Budgets':
+				echo $this->Html->script('page_budget');
+				break;
+		}
 	?>
 	<!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -75,8 +88,8 @@ echo $this->Html->image('i_logo.png', array(
 ?>
 </h1>
 <ul id="gNav">
-<li id="gNavSch"><a href="<?php echo $this->Html->url(array('controller' => 'budgets', 'action' => 'view')); ?>"><i class="fa fa-calendar fa-2x"></i><span>今月ページ</span></a></li>
-<li id="gNavPos"><a href="<?php echo $this->Html->url(array('controller' => 'summaries', 'action' => 'view')); ?>"><i class="fa fa-calculator fa-2x"></i><span>月末ページ</span></a></li>
+<li id="gNavThis"><a href="<?php echo $this->Html->url(array('controller' => 'budgets', 'action' => 'view')); ?>"><i class="fa fa-calendar fa-2x"></i><span>今月ページ</span></a></li>
+<li id="gNavLast"><a href="<?php echo $this->Html->url(array('controller' => 'summaries', 'action' => 'view')); ?>"><i class="fa fa-calculator fa-2x"></i><span>月末ページ</span></a></li>
 </ul>
 </div>
 <!-- //contents.dashboard -->
