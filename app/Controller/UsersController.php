@@ -46,13 +46,13 @@ class UsersController extends AppController{
             'name' => $us,
             'password' =>  $pas)
       ));
-      debug($res);
       if(empty($res)){
         $data = 'Username or password is not correct!';
         $this->set('data', $data);
       }else{
-        $this->Session->write('user', $res[0]);
-        $this->redirect('/');
+        $this->Session->write('user', $res[0]['User']);
+        debug($this->Session->read('user'));
+        //$this->redirect('/');
       }
     }
   }
