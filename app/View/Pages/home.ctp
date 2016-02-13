@@ -1,228 +1,145 @@
+<?php $this->layout = ""; ?>
+<!doctype html>
+<html>
+<head>
 <?php
-/**
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- */
-
-if (!Configure::read('debug')):
-	throw new NotFoundException();
-endif;
-
-App::uses('Debugger', 'Utility');
+echo $this->fetch('meta');
+echo $this->fetch('css');
+echo $this->fetch('script');
 ?>
-<h2><?php echo __d('cake_dev', 'Release Notes for CakePHP %s.', Configure::version()); ?></h2>
-<p>
-	<?php echo $this->Html->link(__d('cake_dev', 'Read the changelog'), 'http://cakephp.org/changelogs/' . Configure::version()); ?>
-</p>
+<!-- stylesheet -->
 <?php
-if (Configure::read('debug') > 0):
-	Debugger::checkSecurityKeys();
-endif;
+echo $this->Html->css('bootstrap.min');
+echo $this->Html->css('bootstrap-select');
+echo $this->Html->css('jquery-ui.min');
+echo $this->Html->css('reset');
+echo $this->Html->css('page_home');
 ?>
-<?php if (file_exists(WWW_ROOT . 'css' . DS . 'cake.generic.css')): ?>
-	<p id="url-rewriting-warning" style="background-color:#e32; color:#fff;">
-		<?php echo __d('cake_dev', 'URL rewriting is not properly configured on your server.'); ?>
-		1) <a target="_blank" href="http://book.cakephp.org/2.0/en/installation/url-rewriting.html" style="color:#fff;">Help me configure it</a>
-		2) <a target="_blank" href="http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration" style="color:#fff;">I don't / can't use URL rewriting</a>
-	</p>
-<?php endif; ?>
-<p>
+<!-- javascript -->
 <?php
-if (version_compare(PHP_VERSION, '5.2.8', '>=')):
-	echo '<span class="notice success">';
-		echo __d('cake_dev', 'Your version of PHP is 5.2.8 or higher.');
-	echo '</span>';
-else:
-	echo '<span class="notice">';
-		echo __d('cake_dev', 'Your version of PHP is too low. You need PHP 5.2.8 or higher to use CakePHP.');
-	echo '</span>';
-endif;
+echo $this->Html->script('jquery-1.11.3.min');
+echo $this->Html->script('jquery-ui.min');
+echo $this->Html->script('jquery.animate-colors-min');
+echo $this->Html->script('page_home');
 ?>
-</p>
-<p>
-	<?php
-	if (is_writable(TMP)):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your tmp directory is writable.');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your tmp directory is NOT writable.');
-		echo '</span>';
-	endif;
-	?>
-</p>
-<p>
-	<?php
-	$settings = Cache::settings();
-	if (!empty($settings)):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'The %s is being used for core caching. To change the config edit %s', '<em>' . $settings['engine'] . 'Engine</em>', 'APP/Config/core.php');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your cache is NOT working. Please check the settings in %s', 'APP/Config/core.php');
-		echo '</span>';
-	endif;
-	?>
-</p>
-<p>
-	<?php
-	$filePresent = null;
-	if (file_exists(APP . 'Config' . DS . 'database.php')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your database configuration file is present.');
-			$filePresent = true;
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your database configuration file is NOT present.');
-			echo '<br/>';
-			echo __d('cake_dev', 'Rename %s to %s', 'APP/Config/database.php.default', 'APP/Config/database.php');
-		echo '</span>';
-	endif;
-	?>
-</p>
-<?php
-if (isset($filePresent)):
-	App::uses('ConnectionManager', 'Model');
-	try {
-		$connected = ConnectionManager::getDataSource('default');
-	} catch (Exception $connectionError) {
-		$connected = false;
-		$errorMsg = $connectionError->getMessage();
-		if (method_exists($connectionError, 'getAttributes')):
-			$attributes = $connectionError->getAttributes();
-			if (isset($errorMsg['message'])):
-				$errorMsg .= '<br />' . $attributes['message'];
-			endif;
-		endif;
-	}
-	?>
-	<p>
-		<?php
-			if ($connected && $connected->isConnected()):
-				echo '<span class="notice success">';
-					echo __d('cake_dev', 'CakePHP is able to connect to the database.');
-				echo '</span>';
-			else:
-				echo '<span class="notice">';
-					echo __d('cake_dev', 'CakePHP is NOT able to connect to the database.');
-					echo '<br /><br />';
-					echo $errorMsg;
-				echo '</span>';
-			endif;
-		?>
-	</p>
-<?php
-endif;
+<meta charset="UTF-8">
+<title>Setsuyaku De Neeke</title>
+</head>
 
-App::uses('Validation', 'Utility');
-if (!Validation::alphaNumeric('cakephp')):
-	echo '<p><span class="notice">';
-		echo __d('cake_dev', 'PCRE has not been compiled with Unicode support.');
-		echo '<br/>';
-		echo __d('cake_dev', 'Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring');
-	echo '</span></p>';
-endif;
-?>
-
-<p>
-	<?php
-	if (CakePlugin::loaded('DebugKit')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'DebugKit plugin is present');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'DebugKit is not installed. It will help you inspect and debug different aspects of your application.');
-			echo '<br/>';
-			echo __d('cake_dev', 'You can install it from %s', $this->Html->link('GitHub', 'https://github.com/cakephp/debug_kit/tree/2.2'));
-		echo '</span>';
-	endif;
-	?>
-</p>
-
-<h3><?php echo __d('cake_dev', 'Editing this Page'); ?></h3>
-<p>
-<?php
-echo __d('cake_dev', 'To change the content of this page, edit: %s.<br />
-To change its layout, edit: %s.<br />
-You can also add some CSS styles for your pages at: %s.',
-	'APP/View/Pages/home.ctp', 'APP/View/Layouts/default.ctp', 'APP/webroot/css');
-?>
-</p>
-
-<h3><?php echo __d('cake_dev', 'Getting Started'); ?></h3>
-<p>
-	<?php
-	echo $this->Html->link(
-		sprintf('<strong>%s</strong> %s', __d('cake_dev', 'New'), __d('cake_dev', 'CakePHP 2.0 Docs')),
-		'http://book.cakephp.org/2.0/en/',
-		array('target' => '_blank', 'escape' => false)
-	);
-	?>
-</p>
-<p>
-	<?php
-	echo $this->Html->link(
-		__d('cake_dev', 'The 15 min Blog Tutorial'),
-		'http://book.cakephp.org/2.0/en/tutorials-and-examples/blog/blog.html',
-		array('target' => '_blank', 'escape' => false)
-	);
-	?>
-</p>
-
-<h3><?php echo __d('cake_dev', 'Official Plugins'); ?></h3>
-<p>
-<ul>
-	<li>
-		<?php echo $this->Html->link('DebugKit', 'https://github.com/cakephp/debug_kit/tree/2.2') ?>:
-		<?php echo __d('cake_dev', 'provides a debugging toolbar and enhanced debugging tools for CakePHP applications.'); ?>
-	</li>
-	<li>
-		<?php echo $this->Html->link('Localized', 'https://github.com/cakephp/localized') ?>:
-		<?php echo __d('cake_dev', 'contains various localized validation classes and translations for specific countries'); ?>
-	</li>
+<body>
+<!-- header -->
+<div id="header">
+<div class="inner">
+<h1><a href="#"><img src="img/top/i_logo.png" alt="PosTom" width="210" height="70"></a></h1>
+<!-- PC向けメニュー -->
+<ul id="hnav" class="hidden-xs">
+<li><a href="#col2">サービス</a></li>
+<li><a href="#col3">特徴</a></li>
+<li><a href="#col4">ムービー</a></li>
+<li><a href="#col5">アカウント登録</a></li>
+<li><a href="users/login">ログイン</a></li>
 </ul>
-</p>
-
-<h3><?php echo __d('cake_dev', 'More about CakePHP'); ?></h3>
-<p>
-<?php echo __d('cake_dev', 'CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC.'); ?>
-</p>
-<p>
-<?php echo __d('cake_dev', 'Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.'); ?>
-</p>
-
-<ul>
-	<li><a href="http://cakephp.org">CakePHP</a>
-	<ul><li><?php echo __d('cake_dev', 'The Rapid Development Framework'); ?></li></ul></li>
-	<li><a href="http://book.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Documentation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Your Rapid Development Cookbook'); ?></li></ul></li>
-	<li><a href="http://api.cakephp.org"><?php echo __d('cake_dev', 'CakePHP API'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Quick API Reference'); ?></li></ul></li>
-	<li><a href="http://bakery.cakephp.org"><?php echo __d('cake_dev', 'The Bakery'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Everything CakePHP'); ?></li></ul></li>
-	<li><a href="http://plugins.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Plugins'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'A comprehensive list of all CakePHP plugins created by the community'); ?></li></ul></li>
-	<li><a href="http://community.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Community Center'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Everything related to the CakePHP community in one place'); ?></li></ul></li>
-	<li><a href="https://groups.google.com/group/cake-php"><?php echo __d('cake_dev', 'CakePHP Google Group'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Community mailing list'); ?></li></ul></li>
-	<li><a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-	<ul><li><?php echo __d('cake_dev', 'Live chat about CakePHP'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/"><?php echo __d('cake_dev', 'CakePHP Code'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Find the CakePHP code on GitHub and contribute to the framework'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/cakephp/issues"><?php echo __d('cake_dev', 'CakePHP Issues'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP Issues'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/cakephp/wiki#roadmaps"><?php echo __d('cake_dev', 'CakePHP Roadmaps'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP Roadmaps'); ?></li></ul></li>
-	<li><a href="http://training.cakephp.org"><?php echo __d('cake_dev', 'Training'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Join a live session and get skilled with the framework'); ?></li></ul></li>
-	<li><a href="http://cakefest.org"><?php echo __d('cake_dev', 'CakeFest'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Don\'t miss our annual CakePHP conference'); ?></li></ul></li>
-	<li><a href="http://cakefoundation.org"><?php echo __d('cake_dev', 'Cake Software Foundation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Promoting development related to CakePHP'); ?></li></ul></li>
+<!-- スマートフォン向けメニュー -->
+<ul id="smHnav" class="visible-xs">
+<!-- 開発中 -->
 </ul>
+</div>
+</div>
+<!-- // header -->
+
+<!-- column 1 -->
+<div id="col1" class="cd-fixed-bg cd-bg-1">
+<div class="inner cd-container">
+<h2>節約して 美味しいもの 食べよう．</h2>
+<h3>日々の生活の中で何を考え食生活を過ごしていますか？</h3>
+<h4>
+Setsuyaku De Neekeを利用して、苦しい節約生活にピリオドをうちましょう。<br>
+このアプリを使えば、他のユーザーとの食費の比較ができ、浮いたお金でふるさと納税をすることで、美味しいお肉などの生鮮食品が自宅に届きます。<br>
+これを機会に故郷へ恩返しをしてみてはどうですか？
+</h4>
+</div> 
+</div> 
+<!-- //column 1 -->
+
+<!-- column 2 -->
+<div id="col2" class="cd-scrolling-bg cd-color-1">
+<div class="inner cd-container">
+<p class="tit">ダミータイトルです</p>
+<p class="txt">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+<p class="thumb"><img src="https://placehold.jp/48/330000/845f4b/600x480.png?text=%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8" alt="ダミー画像" width="600" height="480"></p>
+</div> 
+</div>
+<!-- // column 2 -->
+
+<!-- column 3 -->
+<div id="col3" class="cd-fixed-bg cd-bg-2 no-min-height">
+<div class="inner cd-container">
+<p class="tit">ダミータイトルです。/p>
+<p class="txt">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+<p class="thumb"><img src="https://placehold.jp/48/330000/845f4b/600x480.png?text=%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8" alt="ダミー画像" width="600" height="480"></p>
+</div> 
+</div> 
+<!-- // column 3 -->
+
+<!-- column 4 -->
+<div id="col4" class="cd-scrolling-bg cd-color-3">
+<div class="inner cd-container">
+<p class="tit">ダミータイトルです。</p>
+<p class="txt">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+<p class="thumb"><img src="https://placehold.jp/48/330000/845f4b/600x480.png?text=%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8" alt="ダミー画像" width="600" height="480"></p>
+</div> 
+</div> 
+<!-- // column 4 -->
+
+<!-- column 5 -->
+<div id="col5" class="cd-scrolling-bg cd-color-2">
+<div class="inner cd-container">
+<p class="tit">ダミータイトルです。</p>
+<p class="txt">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+<div class="error-messages disno"></div>
+<div class="signup-form">
+<form action="users/add" id="UserAddForm" method="post" accept-charset="utf-8">
+<div class="disno">
+<input type="hidden" name="_method" value="POST">
+</div>
+<dl class="input text">
+<dt><label for="UserUsername" class="required">User Name</label></dt>
+<dd><input name="data[User][name]" class="form-control required" maxlength="100" type="text" id="UserName"></dd>
+</dl>
+<dl class="input password">
+<dt><label for="UserPassword" class="required">Password</label></dt>
+<dd><input name="data[User][password]" class="form-control required" type="password" id="UserPassword"></dd>
+</dl>
+<dl class="input password">
+<dt><label for="UserPasswordConfirm" class="required">Password(Confirm)</label></dt>
+<dd><input name="data[User][password_confirm]" class="form-control required" type="password" id="UserPasswordConfirm"></dd>
+</dl>
+<div class="submit">
+<input class="btn btn-custom" type="submit" value="アカウント登録">
+</div>
+</form>
+</div>
+
+</div> 
+</div> 
+<!-- // column 5 -->
+
+<!-- footer -->
+<div id="footer">
+<div class="inner">
+<p id="copyright">Coptyright &copy; University of Tsukuba Graduate School of Systems and Information Engineering Team: もりやこでら</p>
+</div>
+</div>
+<!-- // footer -->
+
+<!-- page top -->
+<div class="pagetop disno hidden-xs">
+<a href="#col1">
+PAGE TOP
+</a>
+</div>
+<!-- // page top -->
+</body>
+</html>
+
+

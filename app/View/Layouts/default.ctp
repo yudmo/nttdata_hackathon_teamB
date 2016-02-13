@@ -22,17 +22,41 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $this->fetch('title'); ?>
+		<?php echo $this->fetch('title'); ?> - Setsuyaku De Neeke
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-
-		echo $this->Html->css('cake.generic');
+		/********************************************************
+		 * style sheet
+		 ********************************************************/
+		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('bootstrap-select');
+		echo $this->Html->css('jquery-ui.min');
+		echo $this->Html->css('reset');
+		echo $this->Html->css('base');
+		echo $this->Html->css('font-awesome.min');
+		// ページ固有のスタイルシートを読み込む
+		switch($this->name){
+			case 'Users':
+				echo $this->Html->css('page_user');
+				break;
+			case 'Budgets':
+				echo $this->Html->css('page_buget');
+				break;
+		}
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+		/********************************************************
+		 * javascirpt
+		 ********************************************************/
+		echo $this->Html->script('jquery-1.11.3.min');
+		echo $this->Html->script('jquery.animate-colors-min');
+		echo $this->Html->script('easeljs-0.8.0.min');
+		echo $this->Html->script('bootstrap.min');
+		echo $this->Html->script('bootstrap-select');
+		echo $this->Html->script('jquery-ui.min');
 	?>
 </head>
 <body>
