@@ -30,7 +30,7 @@ echo $this->Html->script('page_home');
 <!-- header -->
 <div id="header">
 <div class="inner">
-<h1><a href="#"><img src="img/top/i_logo.png" alt="PosTom" width="210" height="70"></a></h1>
+<h1><a href="#"><img src="img/top/i_logo.png" alt="ロゴ" width="150" height="150"></a></h1>
 <!-- PC向けメニュー -->
 <ul id="hnav" class="hidden-xs">
 <li><a href="#col2">サービス</a></li>

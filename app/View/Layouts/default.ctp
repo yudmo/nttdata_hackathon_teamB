@@ -38,10 +38,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		// ページ固有のスタイルシートを読み込む
 		switch($this->name){
 			case 'Users':
-				echo $this->Html->css('page_user');
+				//echo $this->Html->css('page_user');
 				break;
 			case 'Budgets':
-				echo $this->Html->css('page_buget');
+				//echo $this->Html->css('page_buget');
 				break;
 		}
 
@@ -58,30 +58,66 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->script('bootstrap-select');
 		echo $this->Html->script('jquery-ui.min');
 	?>
+	<!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</div>
-		<div id="content">
+<!-- contents -->
+<div id="contents">
+<!-- contents.dashboard -->
+<div id="dashboard">
+<h1 id="logo">
+<?php
+echo $this->Html->image('i_logo.png', array(
+	"alt" => "PosTom",
+	'url' => array('controller' => 'events', 'action' => 'index')
+));
+?>
+</h1>
+<ul id="gNav">
+<li id="gNavSch"><a href="<?php echo $this->Html->url(array('controller' => 'budgets', 'action' => 'view')); ?>"><i class="fa fa-calendar fa-2x"></i><span>今月ページ</span></a></li>
+<li id="gNavPos"><a href="<?php echo $this->Html->url(array('controller' => 'summaries', 'action' => 'view')); ?>"><i class="fa fa-calculator fa-2x"></i><span>月末ページ</span></a></li>
+</ul>
+</div>
+<!-- //contents.dashboard -->
+<!-- contents.main -->
+<div id="main">
 
-			<?php echo $this->Flash->render(); ?>
-
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
-				);
-			?>
-			<p>
-				<?php echo $cakeVersion; ?>
-			</p>
-		</div>
-	</div>
-	<?php echo $this->element('sql_dump'); ?>
+<!-- header -->
+<div id="header">
+	<ul id="hNav">
+	<?php
+	// ログインしているユーザ名取得
+	// $user = AuthComponent::user();
+	// $username = $user['username'];
+	// ここでは仮にkoderaというユーザでログインしていることとします
+	$username = 'kodera';
+	// ログインか否かで表示を変更
+	if($username != null){
+		$logoutLink = $this->Html->url(array('controller' => 'users', 'action' => 'logout'));
+		$mypageLink = $this->Html->url(array('controller' => 'summaries', 'action' => 'view'));
+		echo '<li><a href="' . $logoutLink . '">ログアウト</a></li>';
+		echo '<li><a href="' . $mypageLink . '">マイページ</a></li>';
+	}else{
+		$signupLink = $this->Html->url(array('controller' => 'users', 'action' => 'add'));
+		$signinLink = $this->Html->url(array('controller' => 'users', 'action' => 'login'));
+		echo '<li><a href="' . $signinLink . '">アカウント登録</a></li>';
+		echo '<li><a href="' . $signupLink . '">ログイン</a></li>';
+	}
+	?>
+	</ul>
+</div>
+<!-- //header -->
+<?php echo $this->Flash->render(); ?>
+<?php echo $this->fetch('content'); ?>
+<!-- sql dump -->
+<div id="sqldump">
+<?php echo $this->element('sql_dump'); ?>
+</div>
+<!--//sql dump-->
+</div>
+<!-- //contents.main -->
+</div>
+<!-- //contents -->
 </body>
 </html>
