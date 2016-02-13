@@ -25,3 +25,11 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# DreamWeaver generated files #
+###############################
+app/_notes/dwsync.xml
+_notes/
+dwsync.xml
+*.xml
+

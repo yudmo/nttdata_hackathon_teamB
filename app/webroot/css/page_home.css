@@ -1,0 +1,295 @@
+@charset "utf-8";
+/*-------------------------------------------------
+
+  page_home.css
+
+ --------------------------------------------------*/
+
+body, html, main {
+    height: 100%;
+	font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color: #1e1e1e;
+	position: relative;
+}
+
+h2 {
+	font-size: 66px;
+	font-family: 'Montserrat', sans-serif, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka;
+	text-shadow: #222 3px 3px 10px;
+}
+
+h3 {
+	font-size: 30px;
+	font-family: 'Montserrat', sans-serif, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka;
+	margin-bottom: 40px;
+	text-shadow: #222 3px 3px 10px;
+}
+h4 {
+	font-size: 16px;
+	line-height: 32px;
+	text-shadow: #222 1px 1px 5px;
+}
+a, a:hover, a:link, a:visited, a:active {
+	color: #fff;
+	text-decoration: none;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+iframe {
+	display: block;
+	margin: 0px auto;
+	margin-bottom: 30px;
+}
+.disno {
+	display: none;
+}
+.error-message,
+.error-messages {
+	color: #e74c3c;
+	padding: 5px;
+	text-align: center;
+}
+.btn-custom {
+	color: #d35400;
+	background-color: #e67e22;
+	border: none;
+	box-shadow: 0 5px 0 #d35400;
+}
+.btn-custom:hover {
+	margin-top: 3px;
+	margin-bottom: -3px;
+	box-shadow: 0 2px 0 #d35400;
+	color: #fff;
+}
+.inner {
+	width: 1200px;
+	margin: 0 auto;
+}
+.tit {
+	font-size: 28px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 15px;
+}
+.txt {
+	font-size: 18px;
+	text-align: center;
+	line-height: 35px;
+	margin-bottom: 15px;
+}
+.thumb {
+	text-align: center;
+}
+.cd-fixed-bg {
+    min-height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+	color: #fff;
+}
+.no-min-height {
+	min-height: auto;
+}
+.cd-fixed-bg.cd-bg-1 {
+  background-image: url("../img/top/bg_toppage_01.jpg");
+}
+.cd-fixed-bg.cd-bg-2 {
+  background-image:  url("../img/top/bg_toppage_02.jpg");
+}
+.cd-fixed-bg.cd-bg-3 {
+  background-image: url("../img/top/bg_toppage_03.jpg");
+}
+.cd-container {
+	padding: 40px 0;
+}
+/* header */
+#header {
+	width: 100%;
+	height: 70px;
+	background: rgba(32,32,32,0.0);
+	position: fixed;
+	top: 0;
+	left: 0;
+	font-family: 'Montserrat', sans-serif, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka;
+}
+#header h1 {
+	float: left;
+}
+#header #hnav {
+	float: right;
+	display: table;
+}
+#header #hnav li {
+	float: left;
+	display: table-cell;
+	position: relative;
+	text-align: center;
+}
+#header #hnav li a {
+	display: table-cell;
+	width: 120px;
+	height: 70px;
+	vertical-align: middle;
+}
+#header #hnav li a:after {
+	-webkit-transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	position: absolute;
+	z-index: 1;
+	content: "";
+	left: 50%;
+	right: 50%;
+	height: 3px;
+	bottom: 0;
+	background-color: #fff;
+}
+#header #hnav li a:hover:after,
+#header #hnav li .active a:after {
+	left: 0;
+	right: 0;
+}
+
+/* column 1 */
+#col1 {
+	padding: 230px 10px 20px 10px;
+}
+
+/* column 2 */
+#col2 {
+	
+}
+
+/* column 3 */
+#col3 {
+	text-shadow: #222 3px 3px 10px;
+}
+#col3 .inner {
+	padding-bottom: 0;
+}
+/* column 4 */
+#col4 {
+	background-color: #f1f1f1;
+}
+#col4 iframe {
+	max-width: 100%;
+}
+
+/* column 5 */
+#col5 .signup-form {
+	margin: 0 auto;
+}
+#col5 .signup-form label {
+	font-family: 'Montserrat', sans-serif, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka;
+	font-size: 18px;
+	line-height: 50px;
+	margin-bottom: 0;
+}
+#col5 .signup-form label.required:after {
+	content: "*";
+	color: #e74c3c;
+}
+#col5 .signup-form .submit {
+	text-align: center;
+}
+#col5 .signup-form .submit input {
+	padding: 10px 110px;
+}
+#col5 .signup-form dl {
+	margin-bottom: 10px;
+}
+#col5 .signup-form dt {
+	display: inline-block;
+	width: 30%;
+	float: left;
+}
+#col5 .signup-form dd {
+	display: inline-block;
+	width: 70%;
+	float: left;	
+}
+
+/* footer */
+#footer {
+	background: #222;
+	color: #fff;
+}
+#footer .inner {
+	padding: 40px 0;
+}
+#footer #copyright {
+	text-align: center;
+	font-size: 12px;
+}
+
+/* page top */
+.pagetop {
+	position: fixed;
+	right: 40px;
+	bottom: 40px;
+}
+.pagetop a {
+	display: table-cell;
+	background: #222;
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/*
+ * 0 ---------- 768 ---------- 992 ---------- 1200 ----------
+ *       xs             sm             md              lg
+ */
+
+/* responsive for Medium devices */
+@media screen and (max-width: 1200px){
+.inner {
+	width: 960px;
+	margin: 0 auto;
+}
+#col1 {
+	padding: 170px 10px 20px 10px;
+}
+}
+
+/* responsive for Small devices */
+@media screen and (max-width: 992px){
+.inner {
+	width: 720px;
+	margin: 0 auto;
+}
+}
+
+/* responsive for Extra small devices */
+@media screen and (max-width: 768px){
+.inner {
+	width: 460px;
+	max-width: 100%;
+	margin: 0 auto;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+h2 {
+	font-size: 48px;
+}
+h3 {
+	font-size: 22px;
+}
+/* column 4 */
+#col5 .signup-form dt {
+	display: block;
+	width: 100%;
+	float: none;
+}
+#col5 .signup-form dd {
+	display: block;
+	width: 100%;
+	float: none;	
+}
+}
