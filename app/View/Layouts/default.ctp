@@ -41,7 +41,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				//echo $this->Html->css('page_user');
 				break;
 			case 'Budgets':
-				//echo $this->Html->css('page_buget');
+				echo $this->Html->css('page_buget');
 				break;
 		}
 
