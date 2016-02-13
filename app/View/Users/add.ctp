@@ -36,7 +36,7 @@ echo $this->Form->Input('type', array(
   'label' => "家族形態",
   'options' => $family
 ));
-echo $this->Form->end('Confirm');
+echo $this->Form->end('Sign up');
 ?>
 <script type="text/javascript">
 function change_city(obj){
