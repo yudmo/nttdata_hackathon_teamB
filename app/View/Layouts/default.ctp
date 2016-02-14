@@ -43,6 +43,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			case 'Budgets':
 				echo $this->Html->css('page_budget');
 				break;
+			case 'Summaries':
+				echo $this->Html->css('page_summary');
+				break;
 		}
 
 		echo $this->fetch('meta');
@@ -69,6 +72,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			case 'Budgets':
 				echo $this->Html->script('page_budget');
 				break;
+			case 'Summaries':
+				echo $this->Html->script('page_summary');
+				break;
 		}
 	?>
 	<!-- fonts -->
@@ -83,7 +89,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <?php
 echo $this->Html->image('i_logo.png', array(
 	"alt" => "PosTom",
-	'url' => array('controller' => 'events', 'action' => 'index')
+	'url' => array('controller' => 'summaries', 'action' => 'index')
 ));
 ?>
 </h1>
@@ -108,7 +114,7 @@ echo $this->Html->image('i_logo.png', array(
 	// ログインか否かで表示を変更
 	if($username != null){
 		$logoutLink = $this->Html->url(array('controller' => 'users', 'action' => 'logout'));
-		$mypageLink = $this->Html->url(array('controller' => 'summaries', 'action' => 'view'));
+		$mypageLink = $this->Html->url(array('controller' => 'summaries', 'action' => 'index'));
 		echo '<li><a href="' . $logoutLink . '">ログアウト</a></li>';
 		echo '<li><a href="' . $mypageLink . '">マイページ</a></li>';
 	}else{

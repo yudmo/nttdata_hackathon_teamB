@@ -333,6 +333,11 @@ input[type=file].disno {
 	display: block;
 }
 
+/* main.chart */
+#contents #chart {
+	max-width: 100%;
+}
+
 /* footer
 ****************************************************/
 #footer {
@@ -343,4 +348,44 @@ input[type=file].disno {
 }
 #footer #copyright {
 	text-align: center;
+}
+
+
+
+/*
+ * 0 ---------- 768 ---------- 992 ---------- 1200 ----------
+ *       xs             sm             md              lg
+ */
+ /* responsive for Medium devices */
+@media screen and (max-width: 1200px){
+/*#contents {
+	width: 960px;
+	margin: 0 auto;
+}*/
+}
+
+/* responsive for Small devices */
+@media screen and (max-width: 992px){
+/*#contents {
+	width: 720px;
+	margin: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+#contents #dashboard {
+	display: none;
+}
+#contents #main {
+	margin: 0 auto;
+}*/
+}
+
+/* responsive for Extra small devices */
+@media screen and (max-width: 768px){
+/*#contents {
+	width: 460px;
+	max-width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+}*/
 }
