@@ -46,7 +46,7 @@ foreach ($deposit_list as $key => $value) {
 	</div>
 	<div class="txtArea">
 		<p class="tit"><?= $value['Product']['name'] ?></p>
-		<p class="price"><?= $value['Product']['price'] ?></p>
+		<p class="price">&yen;<?= number_format($value['Product']['price']) ?></p>
 		<p class="txt"><?= $value['Product']['description'] ?></p>
 	</div>
 	</a>
