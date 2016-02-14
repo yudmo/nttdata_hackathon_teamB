@@ -21,6 +21,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
+	<!-- meta -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 	<title>
 		<?php echo $this->fetch('title'); ?> - Setsuyaku De Neeke
 	</title>
@@ -77,6 +79,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				break;
 		}
 	?>
+<script type="text/javascript">
+	// コントローラを取得
+	var controller = "<?php echo $this->name; ?>";
+	// アクションを取得
+	var action = "<?php echo $this->action; ?>";
+</script>
 	<!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
@@ -87,13 +95,16 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <div id="dashboard">
 <h1 id="logo">
 <?php
-echo $this->Html->image('i_logo.png', array(
+echo $this->Html->image('i_logo.svg', array(
 	"alt" => "PosTom",
-	'url' => array('controller' => 'summaries', 'action' => 'index')
+	'url' => array('controller' => 'summaries', 'action' => 'index'),
+	'width' => 130,
+	'height' => 130
 ));
 ?>
 </h1>
 <ul id="gNav">
+<li id="gNavMy"><a href="<?php echo $this->Html->url(array('controller' => 'summaries', 'action' => 'index')); ?>"><i class="fa fa-male fa-2x"></i><span>マイページ</span></a></li>
 <li id="gNavThis"><a href="<?php echo $this->Html->url(array('controller' => 'budgets', 'action' => 'view')); ?>"><i class="fa fa-calendar fa-2x"></i><span>今月ページ</span></a></li>
 <li id="gNavLast"><a href="<?php echo $this->Html->url(array('controller' => 'summaries', 'action' => 'view')); ?>"><i class="fa fa-calculator fa-2x"></i><span>月末ページ</span></a></li>
 </ul>

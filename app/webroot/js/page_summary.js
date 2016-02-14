@@ -5,6 +5,9 @@
  --------------------------------------------------*/
 
 $(function(){
-	// ダッシュボードの月末ページを選択状態にする
-	$('#dashboard #gNav #gNavLast').addClass('current');
+	if(!action=='index'){
+		$('#dashboard #gNav #gNavLast').addClass('current');
+	}else{
+		$('#dashboard #gNav #gNavMy').addClass('current');
+	}
 });

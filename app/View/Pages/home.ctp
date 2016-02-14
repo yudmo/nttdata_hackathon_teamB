@@ -101,6 +101,7 @@ Setsuyaku De Neekeを利用して、苦しい節約生活にピリオドをう�
 <p class="txt">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
 <div class="error-messages disno"></div>
 <div class="signup-form">
+
 <form action="users/add" id="UserAddForm" method="post" accept-charset="utf-8">
 <div class="disno">
 <input type="hidden" name="_method" value="POST">
@@ -121,6 +122,7 @@ Setsuyaku De Neekeを利用して、苦しい節約生活にピリオドをう�
 <input class="btn btn-custom" type="submit" value="アカウント登録">
 </div>
 </form>
+
 </div>
 
 </div> 
