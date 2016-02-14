@@ -45,42 +45,8 @@ for(key in budgetsList){
 	chartArray[arrayIndex] = [new Date(key), budgetsList[key], summariesVal];
 	arrayIndex++;
 }
-console.log(chartArray);
-
-/*
-// summariesArrayとbudgetsArrayの最小値を比較する
-var minDate = 99999;
-var minIsBudgets = true;
-if(summariesArray[0][0] < budgetsArray[0][0]){
-	minDate = summariesArray[0][0];
-	minIsBudgets = false;
-}else{
-	minDate = budgetsArray[0][0];
-}
-// summariesArrayとbudgetsArrayの最大値を比較する
-var maxDate = 0;
-var maxIsBudgets = true;
-if(summariesArray[summariesArray.length-1][0] > budgetsArray[budgetsArray.length-1][0]){
-	maxDate = summariesArray[summariesArray.length-1][0];
-	maxIsBudgets = false;
-}else{
-	maxDate = budgetsArray[budgetsArray.length-1][0];
-}
-// 最小日時がBudgetsで最大日時もBudgetsの場合（true, true）
-if(minIsBudgets && maxIsBudgets){
-	
-// 最小日時がBudgetsで最大日時はSummariesの場合（true, false）
-}else if(minIsBudgets && !maxIsBudgets){
-
-// 最小日時がSummariesで最大日時はBudgetsの場合（false, true）
-}else if(!minIsBudgets && maxIsBudgets){
-
-// 最小日時がSummariesで最大日時もSummariesの場合（false, false）
-}else if(!minIsBudgets && !maxIsBudgets){
-	
-}
-*/
-
+// 配列の最後尾は今月で、まだ途中のため実績としてグラフにプロットしない
+chartArray.pop();
 
 /* google chart */
 google.load("visualization", "1", {packages:["corechart"]});
