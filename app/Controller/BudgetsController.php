@@ -3,7 +3,7 @@
 class BudgetsController extends AppController{
 	
 	public $helpers = array('Html', 'Form');
-	public $uses = array('Budget','Category');
+	public $uses = array('Budget','Category','Resource');
 	
 	public function view(){
 		// ログイン中のユーザID
@@ -19,6 +19,15 @@ class BudgetsController extends AppController{
 		$this->set('select1', $this->Category->find('list', array( 
 			'fields' => array( 'id', 'name')
 		)));
+		
+		// ログインユーザと同じ市区町村・同じ世帯形成のオープンデータを取得する
+		$resources = $this->Resource->find('all', array(
+			'conditions' => array(
+				'city_id' => $this->Session->read('user.User.current_city'),
+				'type' => $this->Session->read('user.User.type')
+			)
+		));
+		$this->set('resources', json_encode($resources));
 	}
 	
 	public function add(){

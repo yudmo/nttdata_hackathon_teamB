@@ -1,4 +1,4 @@
 <?php
-class Resouerce extends AppModel {
+class Resource extends AppModel {
 
 }

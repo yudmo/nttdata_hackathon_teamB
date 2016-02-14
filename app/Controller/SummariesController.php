@@ -194,6 +194,7 @@ class SummariesController extends AppController{
     //depositで可能なふるさと納税リスト
     $deposit_list = $this->Product->getProducts($birth_pref, $deposit);
     $this->set('deposit_list',$deposit_list);
+	
   }
   
 	public function index(){
