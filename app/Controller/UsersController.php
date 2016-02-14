@@ -52,7 +52,7 @@ class UsersController extends AppController{
         $this->set('data', $data);
       }else{
         $this->Session->write('user', $res[0]);
-        debug($this->Session->read('user'));
+        //debug($this->Session->read('user'));
         //$this->redirect('/');
       }
     }

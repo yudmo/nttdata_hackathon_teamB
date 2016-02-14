@@ -109,6 +109,9 @@ class SummariesController extends AppController{
     $this->loadModel('User');
     $this->loadModel('Budget');
     $this->loadModel('Product');
+    $this->loadModel('Prefecture');
+    $this->loadModel('City');
+
     $begin = date("Y-m-01", strtotime(date('Y-m-1') . '-1 month'));
     $end = date("Y-m-31", strtotime(date('Y-m-1') . '-1 month'));
 
@@ -127,6 +130,7 @@ class SummariesController extends AppController{
     if($monthly_budgets == null){
       $monthly_budgets = 0;
     }
+    $this->set('monthly_budgets', $monthly_budgets);
 
     //deposit取得
     $user_info = $this->User->find('first',array(
@@ -134,6 +138,7 @@ class SummariesController extends AppController{
         'fields' => '*',
     ));
     $deposit = $user_info['User']['deposit'];
+    $this->set('deposit', $deposit);
 
     //userの生まれ故郷
     $birth_pref = $this->User->find('first',array(
@@ -141,6 +146,29 @@ class SummariesController extends AppController{
         'fields' => 'User.from_pref'
     ));
     $birth_pref = $user_info['User']['from_pref'];
+
+    //都道府県名・市区町村名を取得
+    $temp = $this->Prefecture->find('first', array(
+      'conditions' => array('Prefecture.id' => $user_info['User']['current_pref']),
+      'fields' => 'Prefecture.name'
+    ));
+    //都道府県名
+    $pref_name = $temp['Prefecture']['name'];
+    $this->set('pref_name', $pref_name);
+    //市区町村名
+    foreach ($temp['City'] as $key => $value) {
+      if($value['id'] == $user_info['User']['current_city']){
+        $city_name = $value['name'];
+        $this->set('city_name', $city_name);
+        break;
+      }
+    }
+    //typeについて
+    if($user_info['User']['type']){
+      $this->set('type', '2人以上世帯');
+    }else{
+      $this->set('type', '単身世帯');
+    }
 
     //summaryからaverage取得
     $ave_params = array();
@@ -156,13 +184,14 @@ class SummariesController extends AppController{
     );
     $average = $this->Summary->find('first',$ave_params);
     $average = $average['Summary']['average'];
-    debug($average);
+    $this->set('average', $average);
 
     //先月の節約分で可能なふるさと納税リスト
     $monthly_list = $this->Product->getProducts($birth_pref, $monthly_budgets);
-
+    $this->set('monthly_list', $monthly_list);
     //depositで可能なふるさと納税リスト
     $deposit_list = $this->Product->getProducts($birth_pref, $deposit);
+    $this->set('deposit_list',$deposit_list);
   }
 
 }
