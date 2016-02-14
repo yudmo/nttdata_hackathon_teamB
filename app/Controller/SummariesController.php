@@ -2,6 +2,8 @@
 
 class SummariesController extends AppController{
 
+	public $uses = array('Summary','Budget');
+
   public function add(){
     $this->loadModel('User');
     $this->loadModel('Budget');
@@ -193,5 +195,16 @@ class SummariesController extends AppController{
     $deposit_list = $this->Product->getProducts($birth_pref, $deposit);
     $this->set('deposit_list',$deposit_list);
   }
+  
+	public function index(){
+		// タイプ属性を数値に変換する
+		$type = $this->Session->read('user.User.type')==true?1:0;
+		// 地域別・世帯形成の月別データを取得する
+		$summaries = $this->Summary->query("SELECT YEAR(date) AS year, MONTH(date) AS month, DAY(date) AS day, average FROM summaries WHERE city_id = ".$this->Session->read('user.User.current_city')." AND type = ".$type." ORDER BY YEAR(date), MONTH(date);");
+		$this->set('summaries', json_encode($summaries));
+		// ログイン中のユーザの月別データを取得する
+		$budgets = $this->Budget->query("SELECT YEAR(date) AS year, MONTH(date) as month, SUM(money) as money FROM budgets WHERE user_id = ".$this->Session->read('user.User.id')." GROUP BY YEAR(date), MONTH(date)");
+		$this->set('budgets', json_encode($budgets));
+	}
 
 }

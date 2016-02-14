@@ -20,6 +20,7 @@ for(var i=0; i<budgetsArray.length; i++){
 	budgetsComulArray[i] = [budgetsArray[i][0], comulValue];
 }
 
+/* google chart */
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(
 	function() {

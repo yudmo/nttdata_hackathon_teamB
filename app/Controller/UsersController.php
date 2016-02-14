@@ -41,7 +41,7 @@ class UsersController extends AppController{
       $pas = AuthComponent::password($this->data['User']['password']);
       $us = $this->data['User']['name'];
       $res = $this->User->find('all', array(
-         'fields' => array('id','name'),
+         'fields' => array('id','name','from_pref','current_pref','current_city','deposit','type'),
          'conditions' => array(
             'name' => $us,
             'password' =>  $pas)
@@ -52,8 +52,7 @@ class UsersController extends AppController{
         $this->set('data', $data);
       }else{
         $this->Session->write('user', $res[0]);
-        //debug($this->Session->read('user'));
-        //$this->redirect('/');
+        $this->redirect(array('controller' => 'summaries', 'action' => 'index'));
       }
     }
   }
