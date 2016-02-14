@@ -30,12 +30,12 @@ echo $this->Html->script('page_home');
 <!-- header -->
 <div id="header">
 <div class="inner">
-<h1><a href="#"><img src="img/top/i_logo.png" alt="ロゴ" width="150" height="150"></a></h1>
+<h1><a href="#"><img src="img/top/i_logo.svg" alt="ロゴ" width="240" height="70"></a></h1>
 <!-- PC向けメニュー -->
 <ul id="hnav" class="hidden-xs">
 <li><a href="#col2">サービス</a></li>
 <li><a href="#col3">特徴</a></li>
-<li><a href="#col4">ムービー</a></li>
+<!--<li><a href="#col4">ムービー</a></li>-->
 <li><a href="#col5">アカウント登録</a></li>
 <li><a href="users/login">ログイン</a></li>
 </ul>
@@ -66,7 +66,9 @@ Setsuyaku De Neekeを利用して、苦しい節約生活にピリオドをう�
 <div class="inner cd-container">
 <p class="tit">ダミータイトルです</p>
 <p class="txt">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
-<p class="thumb"><img src="https://placehold.jp/48/330000/845f4b/600x480.png?text=%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8" alt="ダミー画像" width="600" height="480"></p>
+<p class="thumb">
+<img src="img/top/i_service.png" alt="サービスイメージ" width="786" height="545">
+</p>
 </div> 
 </div>
 <!-- // column 2 -->
@@ -74,14 +76,14 @@ Setsuyaku De Neekeを利用して、苦しい節約生活にピリオドをう�
 <!-- column 3 -->
 <div id="col3" class="cd-fixed-bg cd-bg-2 no-min-height">
 <div class="inner cd-container">
-<p class="tit">ダミータイトルです。/p>
+<p class="tit">ダミータイトルです。</p>
 <p class="txt">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
-<p class="thumb"><img src="https://placehold.jp/48/330000/845f4b/600x480.png?text=%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8" alt="ダミー画像" width="600" height="480"></p>
 </div> 
 </div> 
 <!-- // column 3 -->
 
 <!-- column 4 -->
+<!--
 <div id="col4" class="cd-scrolling-bg cd-color-3">
 <div class="inner cd-container">
 <p class="tit">ダミータイトルです。</p>
@@ -89,6 +91,7 @@ Setsuyaku De Neekeを利用して、苦しい節約生活にピリオドをう�
 <p class="thumb"><img src="https://placehold.jp/48/330000/845f4b/600x480.png?text=%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8" alt="ダミー画像" width="600" height="480"></p>
 </div> 
 </div> 
+-->
 <!-- // column 4 -->
 
 <!-- column 5 -->
