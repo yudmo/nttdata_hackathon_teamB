@@ -20,6 +20,21 @@ for(var i=0; i<budgetsArray.length; i++){
 	budgetsComulArray[i] = [budgetsArray[i][0], comulValue];
 }
 
+// ログインユーザと同じ市区町村・同じ世帯形成のデータを受け取る
+var resources = JSON.parse('<?php echo $resources; ?>');
+var average = parseInt(resources[0]['Resource']['average']);
+// 今月の月末日（日数）を取得
+var thisMonthDays = new Date(<?= $thisYear ?>, <?= $thisMonth ?>, 0).getDate();
+// 1日あたりの食費目安
+var budgetPerDay = Math.round(average / thisMonthDays);
+// グラフ描写用配列に目安の食費データを追加する
+for(var i=0; i<budgetsComulArray.length; i++){
+	// 日数を取得
+	var day = budgetsComulArray[i][0].getDate();
+	// 目安となる食費を挿入
+	budgetsComulArray[i][2] = day * budgetPerDay;
+}
+
 /* google chart */
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(
@@ -27,11 +42,12 @@ google.setOnLoadCallback(
 		var data = new google.visualization.DataTable();
 		data.addColumn('date', '');
 		data.addColumn('number', '累積食費');
+		data.addColumn('number', '目安食費');
 		data.addRows(budgetsComulArray);
 		var options = {
 			hAxis: {format: 'MM/dd'},
 			legend: 'none',
-			colors:['#e67e22']
+			colors:['#e67e22', '#d35400']
 		};
 		var chart = new google.visualization.AreaChart(document.getElementById('chart'));
 		chart.draw(data, options);
