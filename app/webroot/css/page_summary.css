@@ -7,3 +7,45 @@
 #chart {
 	height: 400px;
 }
+.titPrice {
+	color: #CC3232;
+	font-size: 55px;
+	font-weight: bold;
+	text-align: center;
+	line-height: normal;
+}
+.colorGray {
+	color: #888888;
+}
+#message {
+	border: 1px solid #797979;
+	margin-bottom: 10px;
+	padding: 10px 20px;
+}
+.furusatoList {
+	margin-bottom: 20px;
+}
+.furusatoList li {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+.furusatoList li a {
+	display: block;
+	padding: 20px 30px;
+}
+.furusatoList li a .imgArea {
+	float: left;
+	margin-right: 5%;
+	width: 10%;
+	text-align: center;
+}
+.furusatoList li a .txtArea {
+	float: left;
+	width: 85%;
+}
+.furusatoList li a .txtArea .price {
+	font-size: 14px;
+	font-weight: bold;
+	color: #c00;
+}

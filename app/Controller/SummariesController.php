@@ -189,7 +189,7 @@ class SummariesController extends AppController{
     $this->set('average', $average);
 
     //先月の節約分で可能なふるさと納税リスト
-    $monthly_list = $this->Product->getProducts($birth_pref, $monthly_budgets);
+    $monthly_list = $this->Product->getProducts($birth_pref, $average - $monthly_budgets);
     $this->set('monthly_list', $monthly_list);
     //depositで可能なふるさと納税リスト
     $deposit_list = $this->Product->getProducts($birth_pref, $deposit);
