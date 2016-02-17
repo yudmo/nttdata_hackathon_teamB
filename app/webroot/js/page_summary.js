@@ -5,9 +5,9 @@
  --------------------------------------------------*/
 
 $(function(){
-	if(!action=='index'){
+	if(action == 'view'){
 		$('#dashboard #gNav #gNavLast').addClass('current');
-	}else{
+	}else if(action == 'index'){
 		$('#dashboard #gNav #gNavMy').addClass('current');
 	}
 });

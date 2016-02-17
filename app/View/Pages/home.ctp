@@ -36,7 +36,7 @@ echo $this->Html->script('page_home');
 <li><a href="#col2">サービス</a></li>
 <li><a href="#col3">特徴</a></li>
 <!--<li><a href="#col4">ムービー</a></li>-->
-<li><a href="#col5">アカウント登録</a></li>
+<li><a href="<?= $this->Html->url(array('controller' => 'users', 'action' => 'add')); ?>">アカウント登録</a></li>
 <li><a href="users/login">ログイン</a></li>
 </ul>
 <!-- スマートフォン向けメニュー -->
@@ -64,8 +64,8 @@ Setsuyaku De Neekeを利用して、苦しい節約生活にピリオドをう�
 <!-- column 2 -->
 <div id="col2" class="cd-scrolling-bg cd-color-1">
 <div class="inner cd-container">
-<p class="tit">ダミータイトルです</p>
-<p class="txt">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+<p class="tit">ブラウザや手持ちのスマートフォンから簡単アクセス</p>
+<p class="txt">Setsuyaku De Neekeは食費にフィーチャーした家計簿アプリです。総務省統計局家計調査データやユーザの利用データから、あなたの目安となる食費を知ることができたり、月末には浮いたお金で美味しいものが食べられるふるさと納税情報を提供します。</p>
 <p class="thumb">
 <img src="img/top/i_service.png" alt="サービスイメージ" width="786" height="545">
 </p>
@@ -76,8 +76,10 @@ Setsuyaku De Neekeを利用して、苦しい節約生活にピリオドをう�
 <!-- column 3 -->
 <div id="col3" class="cd-fixed-bg cd-bg-2 no-min-height">
 <div class="inner cd-container">
-<p class="tit">ダミータイトルです。</p>
-<p class="txt">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+<p class="tit">まずは、お試しください</p>
+<p class="txt">本サービスはすべて利用無料です。メールアドレスを登録することもありません。安心してご利用していただけます。</p>
+<div class="btnArea"><a class="btn-custom btn" href="<?= $this->Html->url(array('controller' => 'users', 'action' => 'add')); ?>">無料アカウント登録</a></div>
+<div class="space"></div>
 </div> 
 </div> 
 <!-- // column 3 -->
@@ -95,6 +97,7 @@ Setsuyaku De Neekeを利用して、苦しい節約生活にピリオドをう�
 <!-- // column 4 -->
 
 <!-- column 5 -->
+<!--
 <div id="col5" class="cd-scrolling-bg cd-color-2">
 <div class="inner cd-container">
 <p class="tit">ダミータイトルです。</p>
@@ -127,12 +130,13 @@ Setsuyaku De Neekeを利用して、苦しい節約生活にピリオドをう�
 
 </div> 
 </div> 
+-->
 <!-- // column 5 -->
 
 <!-- footer -->
 <div id="footer">
 <div class="inner">
-<p id="copyright">Coptyright &copy; University of Tsukuba Graduate School of Systems and Information Engineering Team: もりやこでら</p>
+<p id="copyright">Copyright &copy; University of Tsukuba Graduate School of Systems and Information Engineering Team: もりやこでら</p>
 </div>
 </div>
 <!-- // footer -->
